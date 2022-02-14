@@ -1,11 +1,24 @@
 const express = require('express')
-const app = express()
-const port = 3000
+const cors = require('cors')
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+require('dotenv').config()
+require('./db')()
+
+const { getAllClasstests, getSingleClassTest } = require('./controllers/classtest_controller')
+
+const port = process.env.PORT || 3000
+
+const app = express()
+app.use(cors())
+app.use(express.json())
+
+
+/////ROUTES/////
+app.get('/classtests', getAllClasstests)
+app.get('/classtests/:id', getSingleClassTest)
+////////////////
+
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Eduplan listening at http://localhost:${port}`)
 })
