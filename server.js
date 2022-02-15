@@ -5,6 +5,7 @@ require('dotenv').config()
 require('./db')()
 
 const { getAllClasstests, getSingleClassTest, addClassTest } = require('./controllers/classtest_controller')
+const { register, login } = require('./controllers/user_controller')
 
 const port = process.env.PORT || 3000
 
@@ -17,6 +18,11 @@ app.use(express.json())
 app.get('/classtests', getAllClasstests)
 app.get('/classtests/:id', getSingleClassTest)
 app.post('/classtests', addClassTest)
+
+//USER ROUTES//
+app.post('/register', register)
+app.post('/login', login)
+
 ////////////////
 
 
