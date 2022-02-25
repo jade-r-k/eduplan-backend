@@ -1,0 +1,1 @@
+const Exam = require('../models/exam_schema')
