@@ -35,7 +35,8 @@ const login = (req, res) => {
                 email: user.email,
                 full_name: user.full_name,
                 _id: user._id
-            },'login_eduplan')
+            },'login_eduplan'),
+            user
         })
     })
     .catch(err => {

@@ -5,7 +5,9 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 require('./db')()
 
+/////CONTROLLERS/////
 const { getAllClasstests, getSingleClassTest, addClassTest } = require('./controllers/classtest_controller')
+const { getAllLessons, getSingleLesson, getUserLessons, addLesson } = require('./controllers/lesson_controller')
 const { register, login, loginRequired } = require('./controllers/user_controller')
 
 const port = process.env.PORT || 3000
@@ -28,10 +30,27 @@ app.use((req, res, next) => {
   }
 })
 
-/////ROUTES/////
+/////TEST ROUTES/////
 app.get('/classtests', getAllClasstests)
 app.get('/classtests/:id',loginRequired, getSingleClassTest)
 app.post('/classtests', addClassTest)
+
+/////ASSIGNMENT ROUTES/////
+
+
+/////EVENT ROUTES/////
+
+
+/////EXAM ROUTES/////
+
+
+/////LESSON ROUTES/////
+app.get('/lessons', loginRequired, getAllLessons)
+app.get('/lessons/:id', loginRequired, getSingleLesson)
+app.get('/lessons/user/:id', loginRequired, getUserLessons)
+app.post('/lessons', loginRequired, addLesson)
+
+/////SUBJECT ROUTES/////
 
 //USER ROUTES//
 app.post('/register', register)
