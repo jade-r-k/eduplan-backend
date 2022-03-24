@@ -48,6 +48,40 @@ const getUserLessons = (req, res) => {
     })
 }
 
+const editLesson = (req, res) => {
+    let lessonData = req.body
+
+    Lesson.findByIdAndUpdate(req.params.id, lessonData)
+    .then((data) => {
+        if(data){
+            res.status(201).json(`Lesson with id: ${req.params.id} has been updated`)
+        }
+        else {
+            res.status(404).json(`Lesson with id: ${req.params.id} not found`)
+        }
+    })
+    .catch((err)=>{
+        console.error(err)
+        res.status(500).json(err)
+    })
+}
+
+const deleteLesson = (req, res) => {
+    Lesson.findByIdAndDelete(req.params.id)
+    .then((data) => {
+        if(data){
+            res.status(200).json(`Lesson with id: ${req.params.id} has been deleted`)
+        }
+        else {
+            res.status(404).json(`Lesson with id: ${req.params.id} not found`)
+        }
+    })
+    .catch((err)=>{
+        console.error(err)
+        res.status(500).json(err)
+    })
+}
+
 const addLesson = (req, res) => {
     let lessonData = req.body
 
@@ -73,5 +107,7 @@ module.exports = {
     getAllLessons,
     getSingleLesson,
     getUserLessons,
+    editLesson,
+    deleteLesson,
     addLesson
 }

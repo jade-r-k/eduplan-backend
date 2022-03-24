@@ -10,10 +10,7 @@ const lessonSchema = new Schema({
         type: String,
         required: [true, 'title field is required']
     },
-    lecturer:{
-        type: String
-    },
-    location:{
+    detail:{
         type: String
     },
     day:{
@@ -21,11 +18,11 @@ const lessonSchema = new Schema({
         lowercase: true,
         required: [true, 'day field is required']
     },
-    start_time:{
+    dateStart:{
         type: String,
         required: [true, 'start field is required']
     },
-    end_time:{
+    dateEnd:{
         type: String,
         required: [true, 'end field is required']
     },
