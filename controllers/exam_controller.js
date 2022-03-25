@@ -18,7 +18,7 @@ const getAllExams = (req, res) => {
 
 }
 const getSingleExam = (req, res) => {
-    Exam.findbyId(req.params.id)
+    Exam.findById(req.params.id)
     .then((data) => {
         if(data){
             res.status(200).json(data)

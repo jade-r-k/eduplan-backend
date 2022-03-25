@@ -18,7 +18,7 @@ const getAllEvents = (req, res) => {
 
 }
 const getSingleEvent = (req, res) => {
-    Event.findbyId(req.params.id)
+    Event.findById(req.params.id)
     .then((data) => {
         if(data){
             res.status(200).json(data)
